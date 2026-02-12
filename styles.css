@@ -10,13 +10,15 @@ body {
     background-color: #000;
     color: #fff;
     overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* ---------- HERO SECTION ---------- */
 .main-container {
     height: 100vh;
     min-height: 600px;
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('netflix\ bg.jpeg');
+    /* Ensure you have a 'netflix bg.jpeg' or use a placeholder URL */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('netflix bg.jpeg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -25,7 +27,6 @@ body {
     align-items: center;
 }
 
-/* Header */
 header {
     width: 100%;
     display: flex;
@@ -109,6 +110,7 @@ header .logo {
     background: rgba(22,22,22,0.7);
     color: white;
     font-size: 1rem;
+    outline: none; /* Remove default blue outline to show our custom borders */
 }
 
 .email-signup button {
@@ -137,11 +139,11 @@ header .logo {
     margin-bottom: 20px;
 }
 
-/* ---------- TRENDING (Centered Layout) ---------- */
+/* ---------- TRENDING ---------- */
 .trending-scroll {
     display: flex;
-    justify-content: center; /* This centers the items horizontally */
-    flex-wrap: wrap; /* Allows wrapping on very small screens if needed */
+    justify-content: center; 
+    flex-wrap: wrap; 
     gap: 40px;
     padding-bottom: 20px;
     padding-left: 20px;
@@ -156,17 +158,16 @@ header .logo {
 
 .trending-card:hover {
     transform: scale(1.05);
-    z-index: 2; /* Ensures hovered item comes to top */
+    z-index: 2; 
 }
 
 .trending-card img {
     width: 100%;
     border-radius: 8px;
     display: block;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Adds slight shadow to help image pop */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); 
 }
 
-/* Big Numbers (1, 2, 3...) */
 .rank-number {
     position: absolute;
     bottom: 0;
@@ -180,7 +181,7 @@ header .logo {
     z-index: 3;
 }
 
-/* ---------- REASONS TO JOIN (Grid) ---------- */
+/* ---------- REASONS TO JOIN ---------- */
 .reasons-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -203,7 +204,7 @@ header .logo {
     color: #ccc;
 }
 
-/* ---------- FAQ (Accordion) ---------- */
+/* ---------- FAQ ---------- */
 .faq-list {
     display: flex;
     flex-direction: column;
@@ -256,6 +257,7 @@ footer {
 footer a {
     text-decoration: underline;
     font-size: 0.9rem;
+    color: #b3b3b3;
 }
 
 .footer-links {
@@ -274,13 +276,82 @@ footer a {
     .hero-content h1 { font-size: 2rem; }
     .email-signup input { width: 100%; }
     .footer-links { grid-template-columns: repeat(2, 1fr); }
-    .trending-card { min-width: 120px; }
-    .rank-number { font-size: 5rem; left: -15px; }
-    
-    /* On mobile, we might want to let them scroll again instead of stacking */
     .trending-scroll {
         justify-content: flex-start;
         flex-wrap: nowrap;
         overflow-x: auto;
     }
 }
+
+/* =========================================
+   JAVASCRIPT FEATURE STYLES
+   ========================================= */
+
+/* 1. Validation Message Container */
+.validation-message {
+    height: 25px;       
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Validation Colors */
+.msg-error { color: #e50914; } /* Red */
+.msg-success { color: #2ecc71; } /* Green */
+
+/* Input Border Feedback */
+.input-error { border-bottom: 3px solid #e50914 !important; }
+.input-success { border-bottom: 3px solid #2ecc71 !important; }
+
+/* 2. Light Mode Styles */
+body.light-mode {
+    background-color: #ffffff;
+    color: #333;
+}
+
+body.light-mode .main-container {
+    background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.9)), url('netflix bg.jpeg');
+}
+
+body.light-mode header .logo { color: #e50914; }
+
+body.light-mode h1,
+body.light-mode .sub-text,
+body.light-mode .ready-text,
+body.light-mode .section-title,
+body.light-mode .reason-card h3,
+body.light-mode .reason-card p,
+body.light-mode .rank-number {
+    color: #000;
+}
+
+body.light-mode .email-signup input {
+    background: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+}
+
+body.light-mode .reason-card {
+    background: linear-gradient(149deg, #f0f0f0 0%, #e0e0e0 99%);
+}
+
+body.light-mode .faq-item, 
+body.light-mode .faq-answer {
+    background-color: #f0f0f0;
+    color: #000;
+    border-top: 1px solid #ccc;
+}
+
+body.light-mode .section-container,
+body.light-mode footer {
+    border-top: 8px solid #eee;
+}
+
+body.light-mode footer {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+body.light-mode footer a { color: #333; }
